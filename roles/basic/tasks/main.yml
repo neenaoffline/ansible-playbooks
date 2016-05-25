@@ -5,3 +5,6 @@
   become: yes
   with_items:
     - net-tools # for netstat
+    - htop
+    - tmux
+    - screen
