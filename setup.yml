@@ -4,5 +4,7 @@
   become_method: sudo
   roles:
     - basic
-    - web
-    - db
+    - nginx
+    - nodejs
+    - slackin
+    - slackin-service

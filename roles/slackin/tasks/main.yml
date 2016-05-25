@@ -1,0 +1,5 @@
+---
+
+- name: Install Slackin
+  npm: name=slackin path=/opt/slackin
+  become: yes

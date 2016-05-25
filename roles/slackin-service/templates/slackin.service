@@ -1,0 +1,16 @@
+[Unit]
+Description=Slack invite service
+           
+[Service]
+Type=simple
+PIDFile=/var/run/{{ slackin_service_id }}.pid
+ExecStart=/opt/slackin/node_modules/slackin/bin/slackin {{ slackin_service_team_id }} {{ slackin_service_api_token }}
+ExecStop=/usr/bin/kill -15 $(cat /var/run/{{ slackin_service_id }}.pid)
+Environment=PORT={{ slackin_service_port }}
+Environment=HOSTNAME={{ slackin_service_hostname }}
+Environment=SLACK_CHANNELS={{ slackin_service_channels }}
+Environment=SLACK_INTERVAL={{ slackin_service_poll_interval }}
+Restart=always
+           
+[Install]
+WantedBy=multi-user.target

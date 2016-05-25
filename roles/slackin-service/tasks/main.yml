@@ -1,0 +1,13 @@
+---
+
+- name: Create slackin Systemd unit file
+  template: src=slackin.service dest=/etc/systemd/system/{{ slackin_service_id }}.service
+  become: yes
+
+- name: Enable slackin service
+  service: name={{ slackin_service_id }} enabled=yes
+  become: yes
+
+- name: Start slackin service
+  service: name={{ slackin_service_id }} state=started
+  become: yes
